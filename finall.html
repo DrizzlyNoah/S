@@ -149,6 +149,34 @@ transition:0.3s;
 .cart-btn.bump{
 transform:scale(1.2);
 }
+
+/* ABOUT */
+.about-container{
+max-width:800px;
+margin:auto;
+text-align:center;
+}
+
+.about-text h3{
+font-family:'Oswald';
+font-size:35px;
+margin-bottom:15px;
+letter-spacing:3px;
+}
+
+/* STATS */
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+text-align:center;
+gap:40px;
+}
+
+.stat h2{
+font-family:'Oswald';
+font-size:45px;
+color:#00f7ff;
+}
 </style>
 </head>
 
@@ -171,6 +199,49 @@ transform:scale(1.2);
 <p>High-energy BMW edits. Clean transitions. Aggressive sound design. Premium automotive visuals.</p>
 <a href="#video"><button class="btn">Watch Latest Edit</button></a>
 </div>
+  
+<!-- ABOUT / PERSONAL BRAND -->
+<section id="about">
+<h2 class="section-title">Meet The Creator</h2>
+
+<div class="about-container">
+<div class="about-text">
+<h3>DrizzlyNoah</h3>
+<p>
+Automotive content creator focused on high-energy BMW cinematics.
+Building aggressive, cinematic edits that hit different.
+From widebody builds to night pulls — every edit tells a story.
+</p>
+<a href="https://www.youtube.com/" target="_blank">
+<button class="btn">Subscribe on YouTube</button>
+</a>
+</div>
+</div>
+</section>
+
+</section>  <!-- END ABOUT -->
+
+<!-- STATS -->
+<section id="stats">
+<div class="stats-grid">
+
+<div class="stat">
+<h2 class="counter" data-target="250">0</h2>
+<p>Edits Created</p>
+</div>
+
+<div class="stat">
+<h2 class="counter" data-target="50000">0</h2>
+<p>Total Views</p>
+</div>
+
+<div class="stat">
+<h2 class="counter" data-target="1200">0</h2>
+<p>Subscribers</p>
+</div>
+
+</div>
+</section>
 
 <!-- PORTFOLIO -->
 <section id="work">
@@ -242,7 +313,73 @@ transform:scale(1.2);
 
 </div>
 </section>
+  
+<!-- FAQ -->
+<section id="faq">
+<h2 class="section-title">FAQs</h2>
 
+<div class="faq-container">
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+What software do you use for edits?
+</div>
+<div class="faq-answer">
+I use Adobe Premiere Pro and After Effects for all cinematic transitions and color grading.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+How do I receive my digital products?
+</div>
+<div class="faq-answer">
+After checkout, you will receive your files directly via WhatsApp or Google Drive link.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFAQ(this)">
+Do you offer custom car edits?
+</div>
+<div class="faq-answer">
+Yes. DM me via WhatsApp for custom BMW or automotive cinematic edits.
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+<h2 class="section-title">What Clients Say</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="card-content">
+<h3>@bmw_addict</h3>
+<p>"Best cinematic edit I’ve seen. Clean transitions and insane sound design."</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>@stanceculture</h3>
+<p>"He made my build look like a movie trailer. 10/10."</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>@m4nation</h3>
+<p>"Professional quality. Worth every rupee."</p>
+</div>
+</div>
+
+</div>
+</section>
+  
 <!-- CONTACT -->
 <section id="contact">
 <h2 class="section-title">Let’s Work</h2>
@@ -311,9 +448,38 @@ message += "\nTotal: ₹" + document.getElementById("total").innerText;
 // 🔴 PUT YOUR REAL NUMBER HERE
 window.open("https://wa.me/919897782305?text=" + encodeURIComponent(message));
 }
+
+function toggleFAQ(element){
+let item = element.parentElement;
+item.classList.toggle("active");
+}
+
+// COUNTER ANIMATION
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+counter.innerText="0";
+
+const updateCounter=()=>{
+const target=+counter.getAttribute("data-target");
+const count=+counter.innerText;
+
+const increment=target/100;
+
+if(count<target){
+counter.innerText=Math.ceil(count+increment);
+setTimeout(updateCounter,20);
+}else{
+counter.innerText=target;
+}
+};
+
+updateCounter();
+});
 </script>
 
 </body>
+
 
 
 </html>
